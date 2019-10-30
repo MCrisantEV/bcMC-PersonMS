@@ -27,4 +27,9 @@ public class PersonImpl implements PersonService {
 			return respuesta;
 		});
 	}
+
+	@Override
+	public Mono<Person> findId(String id) {
+		return perRep.findById(id);
+	}
 }
