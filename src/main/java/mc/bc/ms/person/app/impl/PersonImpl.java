@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import mc.bc.ms.person.app.models.Person;
 import mc.bc.ms.person.app.repositories.PersonRepository;
 import mc.bc.ms.person.app.services.PersonService;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @Service
@@ -31,5 +32,12 @@ public class PersonImpl implements PersonService {
 	@Override
 	public Mono<Person> findId(String id) {
 		return perRep.findById(id);
+	}
+
+	@Override
+	public Flux<Person> findAllId(List<Person> person) {
+		return Flux.fromIterable(person).flatMap(l -> {
+			return perRep.findById(l.getId());
+		});
 	}
 }

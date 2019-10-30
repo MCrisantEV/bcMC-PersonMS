@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import mc.bc.ms.person.app.models.Person;
 import mc.bc.ms.person.app.services.PersonService;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -29,5 +30,10 @@ public class PersonController {
 	@GetMapping("/{id}")
 	public Mono<Person> findIdPerson(@PathVariable String id){
 		return perServ.findId(id);
+	}
+	
+	@GetMapping
+	public Flux<Person> findAllIdPerson(@RequestBody List<Person> person){
+		return perServ.findAllId(person);
 	}
 }

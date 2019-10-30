@@ -4,3 +4,4 @@ El Microservicio Persona, contiene varias APIs las cuales devuelven un archivo j
 
 - API savePerson
 - API findIdPerson
+- API findAllIdPersons
