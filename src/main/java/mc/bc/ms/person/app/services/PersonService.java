@@ -14,5 +14,7 @@ public interface PersonService {
 	public Mono<Person> findId(String id);
 	
 	public Flux<Person> findAllId(List<Person> person);
+	
+	public Flux<Person> findAllNames(String names);
 
 }

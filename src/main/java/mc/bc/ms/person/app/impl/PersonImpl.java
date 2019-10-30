@@ -40,4 +40,10 @@ public class PersonImpl implements PersonService {
 			return perRep.findById(l.getId());
 		});
 	}
+
+	@Override
+	public Flux<Person> findAllNames(String names) {
+		return perRep.findByNamesLike(names);
+	}
+	
 }

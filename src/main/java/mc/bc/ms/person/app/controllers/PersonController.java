@@ -36,4 +36,10 @@ public class PersonController {
 	public Flux<Person> findAllIdPerson(@RequestBody List<Person> person){
 		return perServ.findAllId(person);
 	}
+	
+	@GetMapping("/names/{names}")
+	public Flux<Person> findAllNamesPerson(@PathVariable String names){
+		return perServ.findAllNames(names);
+	}
+
 }
