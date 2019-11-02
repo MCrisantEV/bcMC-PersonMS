@@ -1,5 +1,6 @@
 package mc.bc.ms.person.app.services;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -16,5 +17,7 @@ public interface PersonService {
 	public Flux<Person> findAllId(List<Person> person);
 	
 	public Flux<Person> findAllNames(String names);
+	
+	public Flux<Person> findAllDateRange(Date firstDate, Date lastDate);
 
 }

@@ -1,5 +1,8 @@
 package mc.bc.ms.person.app.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +43,20 @@ public class PersonController {
 	@GetMapping("/names/{names}")
 	public Flux<Person> findAllNamesPerson(@PathVariable String names){
 		return perServ.findAllNames(names);
+	}
+	
+	@GetMapping("/dates/{first}/{last}")
+	public Flux<Person> findDateRangesPerson(@PathVariable String first, @PathVariable String last){
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			 Date firstDate = df.parse(first);
+			 Date lastDate = df.parse(last);
+			 
+			 return perServ.findAllDateRange(firstDate, lastDate);
+
+	        } catch (ParseException e) {
+	            return null;
+	        }
 	}
 
 }

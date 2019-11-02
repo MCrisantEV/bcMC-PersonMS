@@ -1,5 +1,6 @@
 package mc.bc.ms.person.app.impl;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,11 @@ public class PersonImpl implements PersonService {
 	@Override
 	public Flux<Person> findAllNames(String names) {
 		return perRep.findByNamesLike(names);
+	}
+
+	@Override
+	public Flux<Person> findAllDateRange(Date firstDate, Date lastDate) {
+		return perRep.findByDateBirthBetween(firstDate, lastDate);
 	}
 	
 }
